@@ -49,9 +49,8 @@ This Xcode project also includes:
 
 * Use of CocoaPods for Xcode package management
 
-* A library of tools for Debugging, Logging and other commonly occurring functions (see danaprajna/util)
+* A library of tools for Debugging, Logging and other common functions (see danaprajna/util)
 
-* A general class, TestSandbox, to manage the test sandbox and to create arbitrary test files (see danaprajna/classes/specta)
-
+* A general class, TestSandbox, to manage ephemeral directories and to create arbitrary test file data (see danaprajna/classes/specta)
 
 
