@@ -58,7 +58,8 @@
 //
 // NB  rootPath may lead with tilde ('~') indicating "home directory".
 //
-- (id)  initWithRootPath:(NSString *) rootPath
+- (id)  initWithRootPath: (NSString *) rootPath
+            testOnDevice: (BOOL)       testOnDevice
 {
   if (!(self = [super init])) {
     DP_LOG_ERROR(@"[super init] failed.");
@@ -75,7 +76,18 @@
   self.verbose = YES;
   [self clearErrorCounter];
 
-  self.rootURL = [NSURL fileURLWithPath:[rootPath stringByExpandingTildeInPath] isDirectory:YES];
+
+  // Testing on device requires prefixing pathname with "/private"
+  //
+  if (testOnDevice) 
+  {
+    NSString  *pathPrefix = @"/private";
+    self.rootURL = [NSURL fileURLWithPath: DP_STRWFMT(@"%@%@", pathPrefix, [rootPath stringByExpandingTildeInPath])
+                              isDirectory: YES ];
+  } else {
+    self.rootURL = [NSURL fileURLWithPath:[rootPath stringByExpandingTildeInPath] isDirectory:YES];
+  }
+  
 
   self.assetURL         = [self.rootURL URLByAppendingPathComponent:SANDBOX_ASSET_STR isDirectory:YES];
   self.workspaceURL     = [self.rootURL URLByAppendingPathComponent:SANDBOX_WORKSPACE_STR isDirectory:YES];

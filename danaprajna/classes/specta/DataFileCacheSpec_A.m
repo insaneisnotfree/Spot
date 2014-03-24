@@ -52,7 +52,8 @@ describe(@"DataFileCache",
   beforeAll(^{ 
     BOOL  rval;
 
-    sandbox = [[TestSandbox alloc] initWithRootPath:@"~/testSandbox/"];
+    //sandbox = [[TestSandbox alloc] initWithRootPath:@"~/testSandbox/" testOnDevice:NO];
+    sandbox = [[TestSandbox alloc] initWithRootPath:@"~/testSandbox/" testOnDevice:YES];
 
     [sandbox recreateWorkspace];  // ALWAYS build DataFileCache from scratch.
 
@@ -423,7 +424,7 @@ describe(@"DataFileCache",
 
 
   }); // context -- files in SMALL cache
-                                                                /**/
+
 }); // describe -- DataFileCache
 
 

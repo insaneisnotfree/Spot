@@ -39,7 +39,8 @@
 
 
   //
-  - (id)  initWithRootPath:(NSString *) rootPath;
+  - (id)  initWithRootPath: (NSString *) rootPath
+              testOnDevice: (BOOL)       testOnDevice;
 
   - (BOOL)  recreateWorkspace;
   - (BOOL)  recreateWorkspaceTmp;
